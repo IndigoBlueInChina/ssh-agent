@@ -1,0 +1,127 @@
+# 端口配置
+port: 7891
+socks-port: 7892
+mixed-port: 7893
+allow-lan: false
+mode: rule
+log-level: info
+
+# 代理服务器配置（指向你的 SSH 隧道）
+proxies:
+  - name: "香港云主机"
+    type: socks5
+    server: 127.0.0.1
+    port: 7890
+
+# 代理组
+proxy-groups:
+  - name: "代理选择"
+    type: select
+    proxies:
+      - 香港云主机
+      - DIRECT
+
+# 分流规则
+rules:
+  # GitHub
+  - DOMAIN-SUFFIX,github.com,代理选择
+  - DOMAIN-SUFFIX,githubusercontent.com,代理选择
+  - DOMAIN-SUFFIX,githubassets.com,代理选择
+  - DOMAIN-SUFFIX,github.io,代理选择
+  
+  # Docker
+  - DOMAIN-SUFFIX,docker.com,代理选择
+  - DOMAIN-SUFFIX,docker.io,代理选择
+  - DOMAIN-SUFFIX,dockerhub.com,代理选择
+  - DOMAIN-SUFFIX,gcr.io,代理选择
+  - DOMAIN-SUFFIX,ghcr.io,代理选择
+  - DOMAIN-SUFFIX,registry.k8s.io,代理选择
+  
+  # NPM / Node.js
+  - DOMAIN-SUFFIX,npmjs.org,代理选择
+  - DOMAIN-SUFFIX,npmjs.com,代理选择
+  - DOMAIN-SUFFIX,nodejs.org,代理选择
+  
+  # Python / PyPI
+  - DOMAIN-SUFFIX,python.org,代理选择
+  - DOMAIN-SUFFIX,pypi.org,代理选择
+  - DOMAIN-SUFFIX,pythonhosted.org,代理选择
+  - DOMAIN-SUFFIX,anaconda.org,代理选择
+  - DOMAIN-SUFFIX,conda.io,代理选择
+  
+  # Google 全家桶
+  - DOMAIN-SUFFIX,google.com,代理选择
+  - DOMAIN-SUFFIX,google.com.hk,代理选择
+  - DOMAIN-SUFFIX,googleapis.com,代理选择
+  - DOMAIN-SUFFIX,googlesource.com,代理选择
+  - DOMAIN-SUFFIX,googleusercontent.com,代理选择
+  - DOMAIN-SUFFIX,gstatic.com,代理选择
+  - DOMAIN-SUFFIX,ggpht.com,代理选择
+  - DOMAIN-SUFFIX,youtube.com,代理选择
+  - DOMAIN-SUFFIX,ytimg.com,代理选择
+  - DOMAIN-SUFFIX,gmail.com,代理选择
+  - DOMAIN-KEYWORD,google,代理选择
+  
+  # OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,openai.com,代理选择
+  - DOMAIN-SUFFIX,chatgpt.com,代理选择
+  - DOMAIN-SUFFIX,oaistatic.com,代理选择
+  - DOMAIN-SUFFIX,oaiusercontent.com,代理选择
+  
+  # Claude / Anthropic
+  - DOMAIN-SUFFIX,anthropic.com,代理选择
+  - DOMAIN-SUFFIX,claude.ai,代理选择
+  
+  # Perplexity AI
+  - DOMAIN-SUFFIX,perplexity.ai,代理选择
+  
+  # Cursor AI
+  - DOMAIN-SUFFIX,cursor.sh,代理选择
+  - DOMAIN-SUFFIX,cursor.com,代理选择
+  
+  # Midjourney
+  - DOMAIN-SUFFIX,midjourney.com,代理选择
+  
+  # Stability AI
+  - DOMAIN-SUFFIX,stability.ai,代理选择
+  - DOMAIN-SUFFIX,stabilityai.us,代理选择
+  
+  # Replicate
+  - DOMAIN-SUFFIX,replicate.com,代理选择
+  - DOMAIN-SUFFIX,replicate.delivery,代理选择
+  
+  # Cohere
+  - DOMAIN-SUFFIX,cohere.com,代理选择
+  - DOMAIN-SUFFIX,cohere.ai,代理选择
+  
+  # Notion AI
+  - DOMAIN-SUFFIX,notion.so,代理选择
+  - DOMAIN-SUFFIX,notion.com,代理选择
+  
+  # Manus AI
+  - DOMAIN-SUFFIX,manus.ai,代理选择
+  
+  # Poe (Quora AI)
+  - DOMAIN-SUFFIX,poe.com,代理选择
+  
+  # Character.AI
+  - DOMAIN-SUFFIX,character.ai,代理选择
+  - DOMAIN-SUFFIX,characterai.io,代理选择
+  
+  # Jasper AI
+  - DOMAIN-SUFFIX,jasper.ai,代理选择
+  
+  # Runway ML
+  - DOMAIN-SUFFIX,runwayml.com,代理选择
+  
+  # Leonardo AI
+  - DOMAIN-SUFFIX,leonardo.ai,代理选择
+  
+  # 其他开发资源
+  - DOMAIN-SUFFIX,golang.org,代理选择
+  - DOMAIN-SUFFIX,go.dev,代理选择
+  - DOMAIN-SUFFIX,rust-lang.org,代理选择
+  - DOMAIN-SUFFIX,crates.io,代理选择
+  
+  # 默认直连
+  - MATCH,DIRECT

@@ -46,113 +46,15 @@
 
 ## 第三步：配置 Clash Verge Rev
 
-### 3.1 创建配置文件
-
-1. 在本地创建一个文件，命名为 `config.yaml`
-2. 复制以下内容到文件中：
-
-```yaml
-# 端口配置
-port: 7891
-socks-port: 7892
-mixed-port: 7893
-allow-lan: false
-mode: rule
-log-level: info
-
-# 代理服务器配置（指向你的 SSH 隧道）
-proxies:
-  - name: "香港云主机"
-    type: socks5
-    server: 127.0.0.1
-    port: 7890
-
-# 代理组
-proxy-groups:
-  - name: "代理选择"
-    type: select
-    proxies:
-      - 香港云主机
-      - DIRECT
-
-# 分流规则
-rules:
-  # GitHub
-  - DOMAIN-SUFFIX,github.com,代理选择
-  - DOMAIN-SUFFIX,githubusercontent.com,代理选择
-  - DOMAIN-SUFFIX,githubassets.com,代理选择
-  - DOMAIN-SUFFIX,github.io,代理选择
-  
-  # Docker
-  - DOMAIN-SUFFIX,docker.com,代理选择
-  - DOMAIN-SUFFIX,docker.io,代理选择
-  - DOMAIN-SUFFIX,dockerhub.com,代理选择
-  - DOMAIN-SUFFIX,gcr.io,代理选择
-  - DOMAIN-SUFFIX,ghcr.io,代理选择
-  - DOMAIN-SUFFIX,registry.k8s.io,代理选择
-  
-  # NPM / Node.js
-  - DOMAIN-SUFFIX,npmjs.org,代理选择
-  - DOMAIN-SUFFIX,npmjs.com,代理选择
-  - DOMAIN-SUFFIX,nodejs.org,代理选择
-  
-  # Python / PyPI
-  - DOMAIN-SUFFIX,python.org,代理选择
-  - DOMAIN-SUFFIX,pypi.org,代理选择
-  - DOMAIN-SUFFIX,pythonhosted.org,代理选择
-  - DOMAIN-SUFFIX,anaconda.org,代理选择
-  - DOMAIN-SUFFIX,conda.io,代理选择
-  
-  # Google 全家桶
-  - DOMAIN-SUFFIX,google.com,代理选择
-  - DOMAIN-SUFFIX,google.com.hk,代理选择
-  - DOMAIN-SUFFIX,googleapis.com,代理选择
-  - DOMAIN-SUFFIX,googlesource.com,代理选择
-  - DOMAIN-SUFFIX,googleusercontent.com,代理选择
-  - DOMAIN-SUFFIX,gstatic.com,代理选择
-  - DOMAIN-SUFFIX,ggpht.com,代理选择
-  - DOMAIN-SUFFIX,youtube.com,代理选择
-  - DOMAIN-SUFFIX,ytimg.com,代理选择
-  - DOMAIN-SUFFIX,gmail.com,代理选择
-  - DOMAIN-KEYWORD,google,代理选择
-  
-  # OpenAI / ChatGPT
-  - DOMAIN-SUFFIX,openai.com,代理选择
-  - DOMAIN-SUFFIX,chatgpt.com,代理选择
-  - DOMAIN-SUFFIX,oaistatic.com,代理选择
-  - DOMAIN-SUFFIX,oaiusercontent.com,代理选择
-  
-  # Vercel v0
-  - DOMAIN-SUFFIX,v0.dev,代理选择
-  - DOMAIN-SUFFIX,vercel.com,代理选择
-  - DOMAIN-SUFFIX,vercel.app,代理选择
-  
-  # Hugging Face
-  - DOMAIN-SUFFIX,huggingface.co,代理选择
-  - DOMAIN-SUFFIX,hf.co,代理选择
-  - DOMAIN-SUFFIX,huggingface.tech,代理选择
-  
-  # LinkedIn
-  - DOMAIN-SUFFIX,linkedin.com,代理选择
-  - DOMAIN-SUFFIX,licdn.com,代理选择
-  - DOMAIN-SUFFIX,golang.org,代理选择
-  - DOMAIN-SUFFIX,go.dev,代理选择
-  - DOMAIN-SUFFIX,rust-lang.org,代理选择
-  - DOMAIN-SUFFIX,crates.io,代理选择
-  
-  # 默认直连
-  - MATCH,DIRECT
-```
-
-### 3.2 导入配置到 Clash Verge Rev
+### 3.1 导入配置到 Clash Verge Rev
 
 1. 打开 Clash Verge Rev
 2. 点击左侧菜单 **「订阅」** 或 **「Profiles」**
 3. 点击 **「新建」** → **「Local」**（本地文件）
-4. 选择你刚才创建的 `config.yaml` 文件
+4. 选择本项目中的 `clash-config.yaml` 文件
 5. 点击导入的配置文件，使其生效（会有高亮显示）
 
-### 3.3 启用系统代理
+### 3.2 启用系统代理
 
 1. 点击左侧菜单 **「设置」**
 2. 开启 **「系统代理」**（System Proxy）
@@ -199,7 +101,7 @@ ssh -D 7890 -N -C -o ServerAliveInterval=60 user@服务器IP
 ```
 
 ### Q: 如何添加更多需要代理的网站？
-A: 编辑 config.yaml，在 rules 部分添加：
+A: 编辑 `clash-config.yaml`，在 rules 部分添加：
 ```yaml
 - DOMAIN-SUFFIX,example.com,代理选择
 ```
