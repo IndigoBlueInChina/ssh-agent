@@ -117,6 +117,12 @@ rules:
   # Leonardo AI
   - DOMAIN-SUFFIX,leonardo.ai,代理选择
   
+  # Reddit
+  - DOMAIN-SUFFIX,reddit.com,代理选择
+  - DOMAIN-SUFFIX,redd.it,代理选择
+  - DOMAIN-SUFFIX,redditmedia.com,代理选择
+  - DOMAIN-SUFFIX,redditstatic.com,代理选择
+  
   # 其他开发资源
   - DOMAIN-SUFFIX,golang.org,代理选择
   - DOMAIN-SUFFIX,go.dev,代理选择
