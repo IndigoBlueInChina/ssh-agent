@@ -133,6 +133,7 @@ rules:
   - DOMAIN-SUFFIX,lnkd.in,代理选择
   - DOMAIN-SUFFIX,huggingface.co,代理选择
   - DOMAIN-SUFFIX,hf.co,代理选择
+  - DOMAIN-SUFFIX,cerebras.ai,代理选择
   
   # 默认直连
   - MATCH,DIRECT
