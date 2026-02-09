@@ -71,7 +71,8 @@ rules:
   # Claude / Anthropic
   - DOMAIN-SUFFIX,anthropic.com,代理选择
   - DOMAIN-SUFFIX,claude.ai,代理选择
-  
+  - DOMAIN-SUFFIX,claude.com,代理选择
+
   # Perplexity AI
   - DOMAIN-SUFFIX,perplexity.ai,代理选择
   
